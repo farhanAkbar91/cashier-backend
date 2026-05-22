@@ -88,4 +88,17 @@ class PosController extends Controller
             'history' => $transactions
         ]);
     }
+
+    public function receipt($id)
+    {
+        $transaction = Transaction::with(['items.product', 'user'])->find($id);
+
+        if (!$transaction) {
+            return response()->json(['message' => 'Transaksi tidak ditemukan'], 404);
+        }
+
+        return response()->json([
+            'transaction' => $transaction
+        ]);
+    }
 }
