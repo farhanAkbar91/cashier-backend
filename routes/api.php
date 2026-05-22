@@ -16,7 +16,7 @@ Route::post('/register', [AuthController::class, 'register']);
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::apiResource('categories', CategoryController::class);
-    Route::get('/products', [ProductController::class, 'index']);
+    Route::apiResource('products', ProductController::class);
     Route::post('/pos/checkout', [PosController::class, 'checkout']);
     Route::get('/pos/history', [PosController::class, 'history']);
     Route::get('/pos/receipt/{id}', [PosController::class, 'receipt']);
